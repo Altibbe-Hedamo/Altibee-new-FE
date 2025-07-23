@@ -24,9 +24,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <span className="text-2xl font-mono font-bold text-emerald-700">Altibbe</span>
         <div className="space-x-6 font-mono text-sm tracking-wider">
-          <a href="#">Hedamo</a>
-          <a href="#">Blog</a>
-          <a href="#">Contact Us</a>
+          <a href="/hedamo">Hedamo</a>
+          <a href="/blog">Blog</a>
+          <a href="/contact">Contact Us</a>
           <a href="#about">About</a>
           <a href="#community">Community</a>
           <a href="#xdc-weekly">xdc-weekly</a>

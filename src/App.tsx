@@ -12,6 +12,10 @@ import NewsInsights from './pages/NewsInsights';
 import XDCWeekly from './pages/XDCWeekly';
 import Ecosystem from './pages/Ecosystem';
 import About from './pages/About';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './components/BlogPostPage';
+import HedamoPage from './pages/HedamoPage';
+import ContactPage from './components/ContactPage';
 
 const HomePage = () => (
   <>
@@ -30,11 +34,17 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/hedamo" element={<HedamoPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+
           <Route path="/about" element={<About />} />
           <Route path="/community" element={<Community />} />
           <Route path="/news-insights" element={<NewsInsights />} />
           <Route path="/xdc-weekly" element={<XDCWeekly />} />
           <Route path="/ecosystem" element={<Ecosystem />} />
+
         </Routes>
         <Footer />
       </div>
