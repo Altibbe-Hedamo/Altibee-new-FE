@@ -4,7 +4,7 @@
   background: linear-gradient(to top, #00e676, #00c853);
   z-index: 9999;
   transform: translateY(100%);
-  animation: wipeUp 0.8s ease-out forwards;
+  animation: wipeUp 0.7s ease-out forwards;
 }
 
 @keyframes wipeUp {

@@ -11,7 +11,7 @@ export default function PageWipe() {
     setShow(true);
 
     // 2) remove it after animation finishes
-    const t = setTimeout(() => setShow(false), 800); // <— duration
+    const t = setTimeout(() => setShow(false), 700); // <— duration
 
     return () => clearTimeout(t);
   }, [location.pathname]); // 🔁 re-run on every route change
