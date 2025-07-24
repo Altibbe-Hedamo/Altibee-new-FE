@@ -3,34 +3,39 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = () => {
   const { scrollYProgress } = useScroll();
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+
+  /* curtain slides from 100 % → 0 % (bottom → top) */
+  const curtainY = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
+
+  /* optional text micro-parallax */
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '-40%']);
 
   return (
-    <section className="relative h-screen overflow-hidden">
-      {/* Background image (parallax) */}
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* 1️⃣  Background image (parallax) */}
       <motion.div
-        className="absolute inset-0 z-0 bg-cover bg-center"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('/public/image.png')`,
-          y: bgY,
+          backgroundImage: `url('/image.png')`,
+          y: useTransform(scrollYProgress, [0, 1], ['0%', '30%']),
         }}
       >
         <div className="absolute inset-0 bg-emerald-900/70" />
       </motion.div>
 
-      {/* Foreground curtain (slides up) */}
+      {/* 2️⃣  Curtain – covers the whole section and slides up */}
       <motion.div
-        className="absolute inset-0 z-20 bg-cover bg-center pointer-events-none"
+        className="absolute inset-0 bg-cover bg-center pointer-events-none"
         style={{
-          backgroundImage: `url('/public/hero-curtain.png')`,
-          y: useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
+          backgroundImage: `url('/hero-curtain.png')`,
+          y: curtainY,
         }}
       />
 
-      {/* Text content */}
+      {/* 3️⃣  Text */}
       <motion.div
-        className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4"
-        style={{ y: useTransform(scrollYProgress, [0, 1], ['0%', '-40%']) }}
+        className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 z-10"
+        style={{ y: textY }}
       >
         <motion.h1
           initial={{ opacity: 0, y: 60 }}
@@ -47,7 +52,8 @@ const Hero = () => {
           transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
           className="max-w-3xl text-center text-lg text-emerald-100 mb-8"
         >
-          We blend cutting-edge technology with time-tested wisdom to empower you with complete transparency in food and wellness products.
+        We blend cutting-edge technology with time-tested wisdom to empower
+          you with complete transparency in food and wellness products.
         </motion.p>
 
         <motion.button
@@ -60,6 +66,9 @@ const Hero = () => {
           Get Verified
         </motion.button>
       </motion.div>
+
+      {/* 4️⃣  Scroll spacer – exactly one viewport height */}
+      <div className="h-screen" />
     </section>
   );
 };

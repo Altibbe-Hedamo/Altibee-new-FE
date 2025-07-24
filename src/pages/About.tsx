@@ -1,259 +1,224 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRightIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
-const About = () => {
-  const foundationRoles = [
-    'Encourage development on the XDC Network',
-    'Generate awareness for the network as a premier destination to build blockchain-based decentralized applications',
-    'Engage competent third parties to assess, evaluate, and support ecosystem infrastructure',
-    'Aggregate decentralized community voices and cover initiatives that highlight the XDC Network\'s global usage and impact'
-  ];
+// ---------- helper ----------
+const AnimatedTextBorder = ({ children, direction = 'up', delay = 0 }) => {
+  const slide = {
+    left: { x: -60, opacity: 0 },
+    right: { x: 60, opacity: 0 },
+    up: { y: 40, opacity: 0 },
+  };
+  return (
+    <motion.span
+      initial={slide[direction]}
+      whileInView={{ x: 0, y: 0, opacity: 1 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.7, delay }}
+      className="relative inline-block"
+    >
+      {children}
+      <motion.span
+        className="absolute left-0 -bottom-1 h-0.5 w-full bg-emerald-400"
+        initial={{ width: 0 }}
+        whileInView={{ width: '100%' }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: delay + 0.2 }}
+      />
+    </motion.span>
+  );
+};
 
-  const adoptionAreas = [
-    {
-      title: 'Asset Tokenization',
-      description: 'Platforms on the XDC Network can transform off-chain assets into digital tokens, providing enhanced liquidity, fractional ownership, unique access keys, and efficient exchange, to name a few.'
-    },
-    {
-      title: 'Bridges, ISO 20022, and Other Enterprise Use Cases',
-      description: 'The XDC Network is host to multiple bridges projects that connect XDC to other blockchain networks. Additionally, the network supports ISO 20022 messaging standards, enabling fast, scalable, and secure rails for financial messaging.'
-    },
-    {
-      title: 'Voting',
-      description: 'XDC\'s blockchain can record votes on a public ledger, providing transparency and immutability for governance processes. READ below about a Voting dApp in development with XDC Community.'
-    },
-    {
-      title: 'Developing Marketplace',
-      description: 'The XDC Ecosystem is evolving into a business-to-business marketplace where enterprises can discover and integrate blockchain solutions. With diverse participants and use cases, there is a wide range of support across the XDC Network.'
-    }
-  ];
+// ---------- refined content ----------
+const pillars = [
+  {
+    title: 'Holistic Transparency',
+    img: '/img/about-soil.jpg',
+    bullets: [
+      'On-farm soil & water audits',
+      'Supply-chain traceability via blockchain',
+      'QR-linked public reports for every product'
+    ],
+    cta: 'Learn more',
+  },
+  {
+    title: 'Certified Health Labels',
+    img: '/img/about-labels.jpg',
+    bullets: [
+      'Platinum • Gold • Green tiers',
+      'Science-backed nutrient validation',
+      'Consumer confidence & premium pricing'
+    ],
+    cta: 'Get certified',
+  },
+  {
+    title: 'Global Reach',
+    img: '/img/about-market.jpg',
+    bullets: [
+      'International organic standards',
+      'Cultural dietary compliance',
+      'Seamless market entry'
+    ],
+    cta: 'Expand globally',
+  },
+];
 
+const stories = [
+  {
+    title: 'From Seed to Shelf',
+    excerpt:
+      'Every carrot, every cream and every capsule can be traced back to the hand that planted it.',
+  },
+  {
+    title: 'Food as Medicine',
+    excerpt:
+      'We prove that what nourishes the soil nourishes the body—and the planet.',
+  },
+  {
+    title: 'Community First',
+    excerpt:
+      'Producers, consumers and planet thrive together in a transparent ecosystem.',
+  },
+];
+
+export default function AboutPage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-teal-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
+      {/* Hero */}
+      <section className="pt-24 pb-16 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            <AnimatedTextBorder direction="up">
+              Altibbe – Health Wisdom Virtue
+            </AnimatedTextBorder>
+          </h1>
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              XDC Mainnet – A History of Performance
-            </h1>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Since its origins in 2017, the XDC Network has seen a distributed community of developers, early adopters and advocates serve as champions for the adoption of XDC's blockchain technology.
-            </p>
-          </motion.div>
+            Since 2017 we have united organic farms, wellness brands and conscious consumers under one promise: transparency from seed to shelf.
+          </motion.p>
         </div>
       </section>
 
-      {/* XDC Vision */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">XDC – The Vision</h2>
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center text-teal-600 font-semibold mb-8 hover:text-teal-700 transition-colors"
+      {/* Altibbe Pillars */}
+      <section className="py-20 px-4 md:px-8">
+        <div className="max-w-7xl mx-auto space-y-32">
+          {pillars.map((p, idx) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, x: idx % 2 === 0 ? -60 : 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.7, delay: idx * 0.15 }}
+              className={`grid md:grid-cols-2 gap-8 items-center ${
+                idx % 2 === 0 ? '' : 'md:flex-row-reverse'
+              }`}
             >
-              Visit the XinFin Website
-              <ArrowTopRightOnSquareIcon className="ml-2 h-4 w-4" />
-            </motion.a>
-            
-            <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-              <p>
-                As an open source enterprise-grade blockchain, XDC Network was designed to support those using DLT technology to more efficiently store and exchange data, assets, and ideas through decentralized applications and enforceable smart contracts.
-              </p>
-              <p>
-                XinFin Fintech's vision for an enterprise-grade blockchain network began with a solid technical foundation and a sustainable route towards decentralized participation. This vision has since inspired distributed innovation and adoption. A decentralized community with diverse contributions create major opportunities for network adoption.
-              </p>
-            </div>
-          </motion.div>
+              <div className={`${idx % 2 === 0 ? '' : 'md:order-last'}`}>
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  className="rounded-2xl shadow-xl w-full h-64 md:h-80 object-cover"
+                />
+              </div>
+              <div className="flex flex-col justify-center">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  <AnimatedTextBorder direction={idx % 2 === 0 ? 'right' : 'left'}>
+                    {p.title}
+                  </AnimatedTextBorder>
+                </h2>
+                <ul className="space-y-2 text-lg text-gray-700">
+                  {p.bullets.map((b) => (
+                    <li key={b}>• {b}</li>
+                  ))}
+                </ul>
+                <button className="btn-mono mt-6 self-start">{p.cta}</button>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Foundation Role */}
+      {/* Stories */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-6 text-lg text-gray-700 leading-relaxed"
-          >
-            <p>
-              XDC Foundation works to support the XDC Ecosystem, where XDC Network's open source technology is adopted for many diverse use cases. A community-driven initiative, the Foundation was formed in the middle of 2021 to support the growth, development and adoption of the XDC Network by collaborating with an informed and active collective of developers, world trade experts and content creators using the XDC Network.
-            </p>
-            <p>
-              XDC Foundation is an independent community-focused entity that was created through a grant from XinFin to promote and support ecosystem development across the network.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-12"
-          >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">The primary role of the Foundation:</h3>
-            <ul className="space-y-4">
-              {foundationRoles.map((role, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start"
-                >
-                  <div className="w-2 h-2 bg-teal-500 rounded-full mt-3 mr-4 flex-shrink-0"></div>
-                  <span className="text-gray-700 leading-relaxed">{role}</span>
-                </motion.li>
-              ))}
-            </ul>
-            
-            <motion.a
-              href="#"
-              whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center mt-8 bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-            >
-              READ: DAO of CHAIN
-              <ArrowRightIcon className="ml-2 h-4 w-4" />
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How XDC can help your business */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-bold text-gray-900 mb-8">How XDC Network can help your business</h2>
-            
-            <div className="space-y-6 text-lg text-gray-700 leading-relaxed mb-12">
-              <p>
-                XDC Foundation works to support the XDC Ecosystem, where XDC Network's open source technology is adopted for many diverse use cases. XDC Foundation was formed in 2021 to support the XDC Network by engaging with ecosystem participants and aggregating key information about the network. It represents a true community-driven initiative.
-              </p>
-              <p>
-                The foundation supports all areas of adoption on the network. These are some that have emerged as solid performers:
-              </p>
-            </div>
-
-            <div className="space-y-8">
-              {adoptionAreas.map((area, index) => (
-                <motion.div
-                  key={area.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="border-l-4 border-teal-500 pl-6"
-                >
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{area.title}</h3>
-                  <p className="text-gray-700 leading-relaxed">{area.description}</p>
-                </motion.div>
-              ))}
-              
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-12">
+            <AnimatedTextBorder direction="up">
+              Stories from the Soil
+            </AnimatedTextBorder>
+          </h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {stories.map((story, idx) => (
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                key={story.title}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                className="border-l-4 border-teal-500 pl-6"
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                className="bg-white p-8 rounded-2xl shadow-xl"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Consult XDC Foundation</h3>
-                <p className="text-gray-700 leading-relaxed">
-                  For businesses looking to explore blockchain solutions, XDC Foundation offers consultation services to help identify the best approaches for your specific use case.{' '}
-                  <a href="#" className="text-teal-600 hover:text-teal-700 font-semibold">
-                    Contact us to learn more
-                  </a>
-                  .
-                </p>
+                <h3 className="text-2xl font-bold mb-3">{story.title}</h3>
+                <p className="text-gray-600">{story.excerpt}</p>
               </motion.div>
-            </div>
-          </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Case Study Banner */}
-      <section className="py-20 bg-gradient-to-r from-teal-500 to-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-4xl font-bold mb-8">
-              How XDC has proved itself a pioneer in the RWA movement and beyond
-            </h2>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="bg-white text-teal-600 font-semibold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors duration-300"
-            >
-              READ NOW
-            </motion.button>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-teal-50 to-blue-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold text-gray-900 mb-8"
-          >
-            Heard enough? Start building with XDC today
-          </motion.h2>
-          <motion.button
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            whileHover={{ scale: 1.05 }}
-            className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-4 px-8 rounded-lg text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            Get started with XDC
-          </motion.button>
+      {/* Vision 2024+ */}
+      <section className="py-20 bg-emerald-600 text-white">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-6">
+            <AnimatedTextBorder direction="up">
+              Vision 2024+
+            </AnimatedTextBorder>
+          </h2>
+          <ul className="space-y-2 text-lg">
+            <li>Educate consumers to make informed wellness choices</li>
+            <li>Celebrate and certify ethical, health-focused producers</li>
+            <li>Build a transparent health-product ecosystem</li>
+            <li>Set new sustainability benchmarks worldwide</li>
+          </ul>
+          <button className="btn-mono bg-white text-emerald-600 mt-8">
+            Join the Movement
+          </button>
         </div>
       </section>
 
       {/* Newsletter */}
-      <section className="py-16 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+      <section className="py-20 bg-gradient-to-r from-emerald-50 to-teal-50">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-4xl font-bold mb-6">
+            <AnimatedTextBorder direction="up">
+              Stay Rooted
+            </AnimatedTextBorder>
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Get soil stories, label launches & health tips delivered monthly.
+          </p>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              alert('Welcome to the Altibbe family!');
+            }}
+            className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
           >
-            <p className="text-lg mb-6">
-              Sign up for important XDC Network announcements & developments at XDC Foundation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-teal-500 focus:outline-none"
-              />
-              <button className="bg-teal-500 hover:bg-teal-600 px-6 py-3 rounded-lg font-semibold transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </motion.div>
+            <input
+              type="email"
+              placeholder="your@email.com"
+              required
+              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-emerald-500 outline-none"
+            />
+            <button type="submit" className="btn-mono">
+              Subscribe
+            </button>
+          </form>
         </div>
       </section>
     </div>
   );
-};
-
-export default About;
+}

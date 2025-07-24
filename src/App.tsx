@@ -14,6 +14,7 @@ import XDCWeekly from './pages/XDCWeekly';
 import Ecosystem from './pages/Ecosystem';
 import './index.css';  // <- make sure this is imported
 import PageWipe from './components/common/PageWipe';
+import AboutPage from './pages/About';
 
 function App() {
   const [showWipe, setShowWipe] = useState(true);
@@ -30,7 +31,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/community" element={<Community />} />
         <Route path="/news-insights" element={<NewsInsights />} />
         <Route path="/xdc-weekly" element={<XDCWeekly />} />

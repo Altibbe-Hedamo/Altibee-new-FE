@@ -63,6 +63,7 @@ html, body {
   padding: 0;
   font-family: 'Inter', sans-serif;
   background-color: #fff;
+  scroll-snap-type: y mandatory;
 }
 
 /* 2️⃣  The wipe overlay */
@@ -78,5 +79,21 @@ html, body {
 @keyframes wipeUp {
   to {
     transform: translateY(-100%); /* ends above the viewport */
+  }
+}
+
+@keyframes flap {
+  0%   { transform: perspective(400px) rotateX(-90deg); opacity: 0; }
+  100% { transform: perspective(400px) rotateX(0deg);   opacity: 1; }
+}
+/* Roll-up key-frame */
+@keyframes rollup {
+  from {
+    transform: translateY(100%) rotateX(60deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotateX(0deg);
+    opacity: 1;
   }
 }
