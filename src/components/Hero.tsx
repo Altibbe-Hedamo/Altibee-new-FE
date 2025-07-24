@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Hero = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  // Parallax & curtain motion
   const { scrollYProgress } = useScroll();
-  const curtainY = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);   // bottom → top
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '-40%']);   // slight lift of text
-
-  // For navbar fade (optional if you reuse global scroll listener)
-  useEffect(() => {
-    const handle = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handle, { passive: true });
-    return () => window.removeEventListener('scroll', handle);
-  }, []);
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
 
   return (
     <section className="relative h-screen overflow-hidden">
@@ -23,7 +12,7 @@ const Hero = () => {
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: `url('/public/image.png')`,
-          y: useTransform(scrollYProgress, [0, 1], ['0%', '30%']),
+          y: bgY,
         }}
       >
         <div className="absolute inset-0 bg-emerald-900/70" />
@@ -34,14 +23,14 @@ const Hero = () => {
         className="absolute inset-0 z-20 bg-cover bg-center pointer-events-none"
         style={{
           backgroundImage: `url('/public/hero-curtain.png')`,
-          y: curtainY,
+          y: useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
         }}
       />
 
       {/* Text content */}
       <motion.div
         className="relative z-10 flex flex-col items-center justify-center h-full text-white px-4"
-        style={{ y: textY }}
+        style={{ y: useTransform(scrollYProgress, [0, 1], ['0%', '-40%']) }}
       >
         <motion.h1
           initial={{ opacity: 0, y: 60 }}

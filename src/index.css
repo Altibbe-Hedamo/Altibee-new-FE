@@ -56,3 +56,27 @@
   }
 }
 
+/* // Global Aninmations */
+/* 1️⃣  Prevents scrollbars during the wipe */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+}
+
+/* 2️⃣  The wipe overlay */
+.page-wipe {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to top, #00e676, #00c853); /* green wipe */
+  z-index: 9999;
+  transform: translateY(100%);   /* starts below the viewport */
+  animation: wipeUp 0.8s ease-out forwards;
+}
+
+@keyframes wipeUp {
+  to {
+    transform: translateY(-100%); /* ends above the viewport */
+  }
+}
