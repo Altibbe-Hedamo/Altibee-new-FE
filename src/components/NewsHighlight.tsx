@@ -38,19 +38,26 @@ const NewsHighlight = () => {
           <li><strong>Health-Centered Product Reporting:</strong> Detailed reports highlighting unique health benefits.</li>
           <li><strong>Global Market Access:</strong> Help products meet regional standards and reach new markets.</li>
         </motion.ul>
-
-        <motion.a
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          whileHover={{ scale: 1.05 }}
-          href="#"
-          className="btn-mono inline-flex items-center"
-        >
-          Join Our Waitlist to Get Verified
-          <ArrowRightIcon className="ml-2 h-5 w-5" />
-        </motion.a>
+<motion.a
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, delay: 0.4 }}
+  whileHover={{ scale: 1.05 }}
+  href="#"
+  className="btn-mono inline-flex items-center"
+>
+  <motion.span
+    className="relative flex items-center"
+    initial={false}
+    animate={{ flexDirection: 'row-reverse' }}
+    whileHover={{ flexDirection: 'row' }}
+    transition={{ type: 'spring', stiffness: 100, damping: 40 }}
+  >
+    <ArrowRightIcon className="h-5 w-5" />
+    <span className="mx-2">Join Our Waitlist to Get Verified</span>
+  </motion.span>
+</motion.a>
       </div>
     </section>
   );

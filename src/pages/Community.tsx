@@ -1,10 +1,8 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
-// Re-use the same helper
+// ---------- helper ----------
 const AnimatedTextBorder = ({ children, direction = 'up', delay = 0 }: any) => {
   const slide = {
     left: { x: -60, opacity: 0 },
@@ -31,32 +29,38 @@ const AnimatedTextBorder = ({ children, direction = 'up', delay = 0 }: any) => {
   );
 };
 
-const Community = () => {
-  const contributeItems = [
-    {
-      title: 'Participate in Community Discussion on XDC.dev',
-      description: 'Join developers and community members in technical discussions',
-      link: '#',
-    },
-    {
-      title: 'Get emails about upcoming XDC events',
-      description: 'Stay informed about conferences, meetups, and community events',
-      link: '#',
-    },
-    {
-      title: 'Track what\'s happening on XDC Voting Dapp',
-      description: 'Participate in governance and community decision making',
-      link: '#',
-    },
-  ];
+// ---------- refined content ----------
+const contributeItems = [
+  {
+    title: 'Tell Your Soil Story on XDC.dev',
+    description:
+      'Publish lab data, drying curves, or carbon gains—get feedback from a global community that speaks both soil science and Solidity.',
+    link: '#',
+  },
+  {
+    title: 'Receive Harvest Alerts',
+    description:
+      'Get pinged when a new nutrient-dense crop hits the network, or when a farm near you joins the traceability program.',
+    link: '#',
+  },
+  {
+    title: 'Vote on Living Labels™',
+    description:
+      'Use the XDC Voting dApp to decide which soil-health metrics earn next season’s color-shifting seal.',
+    link: '#',
+  },
+];
 
+export default function Community() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="pt-24 pb-16 bg-gradient-to-br from-emerald-50 to-teal-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            <AnimatedTextBorder direction="up">Join a thriving and diverse Community</AnimatedTextBorder>
+            <AnimatedTextBorder direction="up">
+              AlTibe – Where Soil Meets Silicon
+            </AnimatedTextBorder>
           </h1>
           <motion.p
             initial={{ opacity: 0, x: -40 }}
@@ -65,7 +69,9 @@ const Community = () => {
             transition={{ duration: 0.8 }}
             className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
           >
-            Embark on a journey with the XDC Network's enthusiastic early adopters, passionate developers, and the global community, who play an everyday role in the network's usage and adoption.
+            AlTibe plugs organic integrity into the XDC Network, turning every
+            root, bean and drop into a passport-carrying citizen of the
+            blockchain.
           </motion.p>
         </div>
       </section>
@@ -80,13 +86,20 @@ const Community = () => {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              <AnimatedTextBorder direction="left">Understanding the heartbeat behind the network</AnimatedTextBorder>
+              <AnimatedTextBorder direction="left">
+                Listening to the pulse beneath the ledger
+              </AnimatedTextBorder>
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              XDC's global community existed for years before XDC Foundation's inception in 2021. The heartbeat of the XDC Network consists of its developers, content creators, validators, stakeholders, enterprises and affiliated organizations.
+              Long before AlTibe partnered with XDC, growers were already sharing
+              soil data under the open sky. Today that same heartbeat beats
+              on-chain: lab results, harvest logs, and carbon scores—transparent,
+              immutable, alive.
             </p>
             <p className="text-lg text-gray-600">
-              XDC.org is designed to be a community hub, aggregating key data, community voices and resources. This is a watering hole for all things XDC.
+              AlTibe.org is the watering hole where farmers, developers, and
+              conscious consumers gather to watch nutrients travel from seedbed
+              to smart contract.
             </p>
           </motion.div>
           <div className="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-xl p-8 h-64 flex items-center justify-center">
@@ -99,7 +112,9 @@ const Community = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            <AnimatedTextBorder direction="up">XDC Ecosystem</AnimatedTextBorder>
+            <AnimatedTextBorder direction="up">
+              Living Ecosystem
+            </AnimatedTextBorder>
           </h2>
           <motion.p
             initial={{ opacity: 0, x: 40 }}
@@ -108,9 +123,11 @@ const Community = () => {
             transition={{ duration: 0.7 }}
             className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto"
           >
-            The XDC Network maintains a robust, diverse and evolving ecosystem. Because participants trust in the network's performance, they can focus on content creation, business strategy and growth.
+            Because trust is baked into the XDC ledger, growers can focus on
+            what they do best—feeding the soil—while brands focus on feeding
+            people.
           </motion.p>
-          <button className="btn-mono">Explore Ecosystem</button>
+          <button className="btn-mono">Explore the Living Map</button>
         </div>
       </section>
 
@@ -119,7 +136,7 @@ const Community = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              <AnimatedTextBorder direction="up">Contribute</AnimatedTextBorder>
+              <AnimatedTextBorder direction="up">Grow with Us</AnimatedTextBorder>
             </h2>
             <motion.p
               initial={{ opacity: 0, y: 40 }}
@@ -128,7 +145,8 @@ const Community = () => {
               transition={{ duration: 0.7 }}
               className="text-lg text-gray-600 max-w-3xl mx-auto"
             >
-              The XDC community includes a global network of individuals with different skills contributing to the ecosystem's growth. Each participant can play a role and there are many ways to get involved.
+              Whether you code, compost, or create content, there’s a row for
+              you in this shared garden.
             </motion.p>
           </div>
 
@@ -162,13 +180,13 @@ const Community = () => {
       <section className="py-20 bg-gradient-to-r from-emerald-50 to-teal-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-8">
-            <AnimatedTextBorder direction="up">Heard enough? Start building with XDC today</AnimatedTextBorder>
+            <AnimatedTextBorder direction="up">
+              Ready to let your product speak for itself?
+            </AnimatedTextBorder>
           </h2>
-          <button className="btn-mono">Get started with XDC</button>
+          <button className="btn-mono">Start the Scan</button>
         </div>
       </section>
     </div>
   );
-};
-
-export default Community;
+}

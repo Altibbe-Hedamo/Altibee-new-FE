@@ -6,13 +6,14 @@ import NewsHighlight from '../components/NewsHighlight';
 import WhatsHappening from '../components/WhatsHappening';
 
 const HomePage = () => (
-  <>
+  <div className="font-mono">
+
     <Hero />
     <GetStarted />
     <PoweredBy />
     <NewsHighlight />
     <WhatsHappening />
-  </>
+  </div>
 );
 
 export default HomePage;
