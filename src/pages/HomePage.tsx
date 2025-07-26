@@ -23,7 +23,7 @@ export default function HomePage() {
         <SplitScreenIntro />
         <PoweredBy />
         <LiveMainnetBanner />
-        <WhatsHappening />
+        {/* <WhatsHappening /> */}
         {/* <GlobalFooter /> */}
       <FooterWithHoverWipe />
     </div>

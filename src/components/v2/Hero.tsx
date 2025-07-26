@@ -35,7 +35,7 @@ export default function Hero() {
           EVM-compatible, open-source, ready for trade finance.
         </p>
 
-        <ScrollingTextButton href="/blog">Read More</ScrollingTextButton>
+        <ScrollingTextButtonp href="/blog">Read More</ScrollingTextButton>
       </div>
     </section>
   );
