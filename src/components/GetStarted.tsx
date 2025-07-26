@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import AnimatedTextBorder from './AnimatedTextBorder';
+import AnimatedTextBorder from './common/AnimatedTextBorder';
 
 const GetStarted = () => {
   const ref = useRef(null);

@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import AnimatedTextBorder from './AnimatedTextBorder';
+import AnimatedTextBorder from './common/AnimatedTextBorder';
 
 const NewsHighlight = () => {
   const ref = useRef(null);

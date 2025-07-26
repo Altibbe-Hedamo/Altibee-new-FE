@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import AnimatedTextBorder from './AnimatedTextBorder';
+import AnimatedTextBorder from '../../common/AnimatedTextBorder';
 
 const PoweredBy = () => {
   const ref = useRef(null);

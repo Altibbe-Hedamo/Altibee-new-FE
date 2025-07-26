@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react';
 
 export default function SmoothWrapper() {
+  /* keep the vh helper */
   useEffect(() => {
     const setVh = () =>
       document.documentElement.style.setProperty(
@@ -15,17 +16,33 @@ export default function SmoothWrapper() {
 
   return (
     <section
-      style={{ height: 'calc(var(--vh, 1vh) * 120)', backgroundImage: "url('https://picsum.photos/1920/1081')" }}
+      style={{ height: 'calc(var(--vh, 1vh) * 120)' }}
       className="
         relative
         z-10
         w-full
-        bg-cover
-        bg-center
+        flex
+        items-center
+        justify-center
         bg-[rgb(19,22,25)]
       "
     >
-      {/* Optional dark overlay so text above pops */}
+      {/* background layer with circle → full reveal animation */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          circle-reveal
+        "
+        style={{
+          backgroundImage: "url('https://picsum.photos/1920/1081')",
+          animation: 'circleGrow 1.2s cubic-bezier(.25,.8,.25,1) forwards',
+        }}
+      />
+
+      {/* subtle overlay so text above remains readable */}
       <div className="absolute inset-0 bg-black/20" />
     </section>
   );

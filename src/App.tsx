@@ -14,7 +14,8 @@ import Ecosystem from './pages/Ecosystem';
 import './index.css';  // <- make sure this is imported
 import PageWipe from './components/common/PageWipe';
 import AboutPage from './pages/About';
-import HomePage from './pages/HomePage';
+import HomePage from './pages/v2/HomePage';
+import NetworkPage from './pages/v2/NetworkPage';
 
 function App() {
   const [showWipe, setShowWipe] = useState(true);
@@ -32,6 +33,9 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<HomePage />} />
+        <Route path="/networkj" element={<NetworkPage />} />
+
+        
         <Route path="/about" element={<AboutPage />} />
         <Route path="/community" element={<Community />} />
         <Route path="/news-insights" element={<NewsInsights />} />

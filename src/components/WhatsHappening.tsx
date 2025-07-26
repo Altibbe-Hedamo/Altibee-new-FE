@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import AnimatedTextBorder from './AnimatedTextBorder';
+import AnimatedTextBorder from './common/AnimatedTextBorder';
 
 const WhatsHappening = () => {
   const ref = useRef(null);

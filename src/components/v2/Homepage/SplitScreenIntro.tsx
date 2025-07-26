@@ -1,6 +1,6 @@
 // SplitScreenIntro.tsx
 import React from 'react';
-import ArrowButton from '../common/ArrowButton';
+import ArrowButton from '../../common/ArrowButton';
 
 export default function SplitScreenIntro() {
   return (

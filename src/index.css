@@ -140,3 +140,12 @@ html, body {
     to { transform: translateY(-100%); }
   }
 }
+
+@keyframes circleGrow {
+  0% {
+    clip-path: circle(30% at 50% 100%);
+  }
+  100% {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
