@@ -1,76 +1,69 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+// components/Hero.tsx
+import { useEffect } from 'react';
 
-const Hero = () => {
-  const { scrollYProgress } = useScroll();
-
-  /* curtain slides from 100 % → 0 % (bottom → top) */
-  const curtainY = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
-
-  /* optional text micro-parallax */
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '-40%']);
+export default function Hero() {
+  // Mobile-safe 100vh
+  useEffect(() => {
+    const setVh = () =>
+      document.documentElement.style.setProperty(
+        '--vh',
+        `${window.innerHeight * 0.01}px`
+      );
+    setVh();
+    window.addEventListener('resize', setVh);
+    return () => window.removeEventListener('resize', setVh);
+  }, []);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
-      {/* 1️⃣  Background image (parallax) */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url('/image.png')`,
-          y: useTransform(scrollYProgress, [0, 1], ['0%', '30%']),
-        }}
-      >
-        <div className="absolute inset-0 bg-emerald-900/70" />
-      </motion.div>
+    <section
+      style={{ height: 'calc(var(--vh, 1vh) * 84)' }}
+      className="relative w-full flex items-center justify-center bg-[#131619] text-[#9FF3FF] px-6"
+    >
+      {/* Optional subtle noise overlay */}
+      <div className="absolute inset-0 -z-10 opacity-5 bg-[url('/image.png')]" />
 
-      {/* 2️⃣  Curtain – covers the whole section and slides up */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center pointer-events-none"
-        style={{
-          backgroundImage: `url('/hero-curtain.png')`,
-          y: curtainY,
-        }}
-      />
+      <div className="max-w-5xl mx-auto text-center">
+        {/* Editorial headline */}
+        <h1 className="font-editorial text-[clamp(6.2rem,7.3vw,16.6rem)] leading-none tracking-tight">
+          <em className="not-italic">
+            Enterprise-grade <br /> blockchain
+          </em>
+        </h1>
 
-      {/* 3️⃣  Text */}
-      <motion.div
-        className="absolute inset-0 flex flex-col items-center justify-center text-white px-4 z-10"
-        style={{ y: textY }}
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: 'easeOut' }}
-          className="text-4xl md:text-6xl font-bold font-mono mb-6"
+        <p className="mt-6 font-sans text-[clamp(1.8rem,2vw,2.2rem)] text-[#9FF3FF]/90">
+          EVM-compatible, open-source, ready for trade finance.
+        </p>
+
+        {/* Animated button */}
+        <a
+          href="#next"
+          className="group relative inline-flex items-center justify-center max-w-[42.5rem] mt-12 px-8 py-5 font-sans text-[clamp(1.8rem,2vw,2.2rem)] tracking-tight"
         >
-          Leading Transparency in Health and Wellness
-        </motion.h1>
+          <span className="relative overflow-hidden">
+            <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
+              Explore XDC
+            </span>
+            <span className="absolute inset-0 block translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0">
+              Explore XDC
+            </span>
+          </span>
 
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: 'easeOut' }}
-          className="max-w-3xl text-center text-lg text-emerald-100 mb-8"
-        >
-        We blend cutting-edge technology with time-tested wisdom to empower
-          you with complete transparency in food and wellness products.
-        </motion.p>
-
-        <motion.button
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-          whileHover={{ scale: 1.05 }}
-          className="btn-mono"
-        >
-          Get Verified
-        </motion.button>
-      </motion.div>
-
-      {/* 4️⃣  Scroll spacer – exactly one viewport height */}
-      <div className="h-screen" />
+          {/* Arrow */}
+          <svg
+            className="w-[0.7em] h-[0.7em] ml-[0.7em] transition-transform duration-300 ease-out group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M17.5 12H6.5m11 0l-5-5m5 5l-5 5"
+            />
+          </svg>
+        </a>
+      </div>
     </section>
   );
-};
-
-export default Hero;
+}

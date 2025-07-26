@@ -46,8 +46,8 @@
   .btn-mono {
     @apply font-mono uppercase tracking-wider text-sm px-6 py-3
            border border-current
-           shadow-[6px_6px_0_theme(colors.emerald.400),-3px_-3px_0_transparent]
-           hover:shadow-[6px_6px_0_theme(colors.emerald.400),-6px_-6px_0_transparent]
+           /* shadow-[6px_6px_0_theme(colors.emerald.400),-3px_-3px_0_transparent] */
+           /* hover:shadow-[6px_6px_0_theme(colors.emerald.400),-6px_-6px_0_transparent] */
            transition-all duration-300 ease-out hover:translate-x-[-2px] hover:translate-y-[-2px];
   }
 
@@ -96,5 +96,47 @@ html, body {
   to {
     transform: translateY(0) rotateX(0deg);
     opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: 'Elyanor';
+  src: url('/fonts/elyanor/Elyanor-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Elyanor';
+  src: url('/fonts/elyanor/Elyanor-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Elyanor';
+  src: url('/fonts/elyanor/Elyanor-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Elyanor';
+  src: url('/fonts/elyanor/Elyanor-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@layer utilities {
+  .translate-z-0 {
+    transform: translateZ(0);   /* pulls the sleeve one layer forward */
+  }
+}
+@layer utilities {
+  @keyframes wipeUp {
+    to { transform: translateY(-100%); }
   }
 }

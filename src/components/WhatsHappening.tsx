@@ -42,7 +42,7 @@ const WhatsHappening = () => {
   const prev = () => setCurrent((c) => (c - 1 + items.length) % items.length);
 
   return (
-<section ref={ref} className="py-20 bg-white">
+<section ref={ref} className="py-20 bg-white z-10">
   <div className="max-w-7xl mx-auto px-4">
     <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
       <AnimatedTextBorder direction="up" delay={0}>
@@ -70,8 +70,8 @@ const WhatsHappening = () => {
             {/* content card */}
             <div
               className={`w-full md:w-[calc(50%-2rem)]
-                          bg-gradient-to-br from-emerald-500 to-teal-600
-                          rounded-xl p-6 text-white shadow-lg
+                       
+                          rounded-xl p-6 text-black 
                           ${isLeft ? 'md:mr-8' : 'md:ml-8'}`}
             >
               <h3 className="text-xl font-bold mb-2">
@@ -79,11 +79,11 @@ const WhatsHappening = () => {
                   {item.year} – {item.title}
                 </AnimatedTextBorder>
               </h3>
-              <p className="text-sm text-emerald-100">{item.body}</p>
+              <p className="text-sm text-black">{item.body}</p>
             </div>
 
             {/* dot on the line */}
-            <div className="absolute left-1/2 top-4 w-4 h-4 bg-emerald-500 rounded-full -translate-x-1/2 shadow" />
+            <div className="absolute left-1/2 top-4 w-4 h-4 bg-cyan-200 rounded-full -translate-x-1/2 shadow" />
           </motion.div>
         );
       })}

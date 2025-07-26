@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
 import BlogPage from './pages/BlogPage';
 import BlogPostPage from './components/BlogPostPage';
 import HedamoPage from './pages/HedamoPage';
@@ -15,6 +14,7 @@ import Ecosystem from './pages/Ecosystem';
 import './index.css';  // <- make sure this is imported
 import PageWipe from './components/common/PageWipe';
 import AboutPage from './pages/About';
+import HomePage from './pages/HomePage';
 
 function App() {
   const [showWipe, setShowWipe] = useState(true);
@@ -30,6 +30,7 @@ function App() {
       <PageWipe />
       <Navbar />
       <Routes>
+        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/community" element={<Community />} />

@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import AnimatedTextBorder from './AnimatedTextBorder';
-import ScrollUpLi from './common/ScrollUpLi';
 
 const PoweredBy = () => {
   const ref = useRef(null);
@@ -13,8 +12,39 @@ const PoweredBy = () => {
     'Navitas Organics', 'Four Sigmatic', 'Amazing Grass', 'Garden of Life',
   ];
 
+  const NUM_CARDS = 6;
+  const STAGGER = 400;            // ms between card starts
+  const DURATION = 2400;          // ms between updates for one card
+
+  // each entry is the index in the master partners list for that card
+  const [indices, setIndices] = useState(
+    Array.from({ length: NUM_CARDS }, (_, i) => i) // start 0-5
+  );
+
+  useEffect(() => {
+    if (!inView) return;
+
+    const timers = [];
+    for (let i = 0; i < NUM_CARDS; i++) {
+      // staggered start
+      const start = setTimeout(() => {
+        const interval = setInterval(() => {
+          setIndices(prev =>
+            prev.map((val, cardIdx) =>
+              cardIdx === i ? (val + NUM_CARDS) % partners.length : val
+            )
+          );
+        }, DURATION);
+        timers.push(interval);
+      }, i * STAGGER);
+      timers.push(start);
+    }
+
+    return () => timers.forEach(clearTimeout);
+  }, [inView, partners.length]);
+
   return (
-    <section ref={ref} className="py-20 bg-white">
+    <section ref={ref} className="py-20 bg-white z-10">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
           <AnimatedTextBorder direction="left" delay={0}>
@@ -22,36 +52,31 @@ const PoweredBy = () => {
           </AnimatedTextBorder>
         </h2>
 
-        {/* plain list */}
-        <ul className="max-w-4xl mx-auto mb-12 space-y-2 text-gray-700 list-disc list-inside">
-          <li><strong>Organic Agriculture & Produce:</strong> Sustainable fruits, vegetables, grains and crops.</li>
-          <li><strong>Animal Products:</strong> Clean, ethically-raised meat, seafood and dairy.</li>
-          <li><strong>Beauty & Fashion:</strong> Natural cosmetics and eco-friendly fabrics.</li>
-          <li><strong>Wellness Products:</strong> Herbal supplements and holistic health solutions.</li>
-        </ul>
-
-        {/* partners scroll-up + hover-bounce */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
-          {partners.map((p, i) => (
-            <motion.div
-              key={p}
-              initial={{ y: 60, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-              whileHover={{
-                y: [0, -6, 0],
-                transition: { duration: 0.35, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' },
-              }}
-              className="flex items-center justify-center p-4 bg-gray-50 rounded-lg"
-            >
-              <span className="text-sm font-semibold text-gray-700">{p}</span>
-            </motion.div>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-stretch">
+          {indices.map((idx, cardNo) => (
+            <ScrollCard key={cardNo} text={partners[idx]} />
           ))}
         </div>
       </div>
     </section>
   );
 };
+
+/* -------------------------------------------------- */
+/* One card that scrolls its text up/down             */
+/* -------------------------------------------------- */
+const ScrollCard = ({ text }) => (
+  <div className="w-full h-24 rounded-lg bg-gray-50 flex overflow-hidden">
+    <motion.div
+      key={text} // forces re-animation when text changes
+      initial={{ y: 40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="w-full flex items-center justify-center p-3"
+    >
+      <span className="text-sm font-semibold text-gray-700">{text}</span>
+    </motion.div>
+  </div>
+);
 
 export default PoweredBy;
