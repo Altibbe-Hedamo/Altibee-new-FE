@@ -44,7 +44,7 @@ const PoweredBy = () => {
   }, [inView, partners.length]);
 
   return (
-    <section ref={ref} className="py-20 bg-white z-10">
+    <section ref={ref} className="py-20 bg-white z-10 bg-black">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
           <AnimatedTextBorder direction="left" delay={0}>
@@ -66,7 +66,7 @@ const PoweredBy = () => {
 /* One card that scrolls its text up/down             */
 /* -------------------------------------------------- */
 const ScrollCard = ({ text }) => (
-  <div className="w-full h-24 rounded-lg bg-gray-50 flex overflow-hidden">
+  <div className="w-full h-24 rounded-lg bg-gray-50 flex overflow-hidden z-10">
     <motion.div
       key={text} // forces re-animation when text changes
       initial={{ y: 40, opacity: 0 }}

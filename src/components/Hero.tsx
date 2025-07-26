@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       style={{ height: 'calc(var(--vh, 1vh) * 84)' }}
-      className="relative w-full flex items-center justify-center bg-[#131619] text-[#9FF3FF] px-6"
+      className="relative w-full flex items-center justify-center bg-[#131619] text-[#9FF3FF] px-6  sticky top-0 0"
     >
       {/* Optional subtle noise overlay */}
       <div className="absolute inset-0 -z-10 opacity-5 bg-[url('/image.png')]" />

@@ -17,7 +17,7 @@ export default function SplitScreenIntro() {
 
         {/* 2️⃣  RIGHT : Text half */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center py-16 px-[clamp(1rem,6vw,4rem)]">
-          {/* Enterprise */}
+      {/* Enterprise */}
           <div className="mb-12">
             <h2 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] leading-tight">
               Enterprise

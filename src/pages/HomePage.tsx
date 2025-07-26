@@ -10,15 +10,17 @@ import GlobalFooter from '../components/common/GlobalFooter';
 import SmoothWrapper from '../components/common/SmoothWrapper';
 import SplitScreenIntro from '../components/v2/SplitScreenIntro';
 import FooterWithHoverWipe from '../components/common/FooterWipe';
+import ClothWrapper from '../components/common/ClothWrapper';
 // import FooterWipe from '../components/common/FooterWipe';
 
 export default function HomePage() {
   return (
     <div className="font-mono">
-      <Hero />
+        
+    <Hero />
+    <div className=" relative
+    z-10">
 
-      {/* Everything that scrolls */}
-      
         <SmoothWrapper />
         <SplitScreenIntro />
         <PoweredBy />
@@ -26,6 +28,7 @@ export default function HomePage() {
         {/* <WhatsHappening /> */}
         {/* <GlobalFooter /> */}
       <FooterWithHoverWipe />
+    </div>
     </div>
   );
 }
