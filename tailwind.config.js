@@ -3,6 +3,12 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      colors: {
+        'brand-bg': '#F8FBFC',
+        'brand-text': '#131619',
+        'brand-accent': '#FFBFAB',
+        'brand-button': '#FFBFAB',
+      },
       fontFamily: {
         // editorial: ['Editorial New', 'serif'],
         // sans: ['Untitled Sans', 'system-ui', 'sans-serif'],

@@ -1,6 +1,6 @@
 // NetworkHero.tsx
 const NetworkHero = () => (
-  <section className="bg-[#131619] text-[#9FF3FF] px-6 py-24 md:py-40">
+  <section className=" w-full">
     {/* invisible SVG clip-path definition */}
     <svg width="0" height="0" aria-hidden="true">
       <defs>
@@ -10,32 +10,32 @@ const NetworkHero = () => (
       </defs>
     </svg>
 
-    <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-      {/* Left side – flush-left */}
-      <div className="flex flex-col justify-center items-start">
-        <h1 className="font-mono text-4xl md:text-7xl font-bold leading-none">
+    <div className="max-w-7xl mx-auto grid md:grid-cols-2 items-stretch min-h-[70vh] md:min-h-[80vh] mb-8">
+      {/* Left side – text centered vertically */}
+      <div className="flex flex-col justify-center px-6 py-12 md:py-24">
+        <h1 className="font-mono text-4xl md:text-6xl lg:text-7xl font-bold leading-none">
           <span className="block">XDC Network</span>
           <em className="block italic">A channel to build and connect</em>
         </h1>
         <p className="mt-6 font-sans text-lg md:text-xl max-w-lg leading-relaxed">
-          As a decentralized public ledger, the Layer 1 XDC Network enables information
-          transparency and provides a distributed, universal ledger of truth — unburdened
-          by central administrative controls or a single point of failure.
+          As a decentralized public ledger, the Layer 1 XDC Network enables
+          information transparency and provides a distributed, universal ledger
+          of truth — unburdened by central administrative controls or a single
+          point of failure.
         </p>
       </div>
 
-      {/* Right side – flush-right with actual image */}
-      <div className="flex justify-end items-center">
+      {/* Right side – image fills full height */}
+      <div className="flex items-stretch">
         <img
-          src="/image.png"      
+          src="/image.png"
           alt="XDC illustration"
-          width={439}
-          height={532}
-          className="w-full max-w-[439px] h-auto bg-slate-800 rounded-xl object-cover"
+          className="w-full h-full object-cover"
           style={{ clipPath: 'url(#frame-a)' }}
         />
       </div>
     </div>
   </section>
 );
+
 export default NetworkHero;

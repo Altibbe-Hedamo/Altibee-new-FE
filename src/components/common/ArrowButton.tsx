@@ -5,11 +5,13 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline';
 interface ArrowButtonProps {
   href?: string;
   children: React.ReactNode;
+  classname?: string;
 }
 
 export default function ArrowButton({
   href = '#',
   children,
+  classname = '',
 }: ArrowButtonProps) {
   return (
     <motion.a
@@ -19,7 +21,7 @@ export default function ArrowButton({
       transition={{ duration: 0.6, delay: 0.4 }}
       whileHover={{ scale: 1.05 }}
       href={href}
-      className="btn-mono inline-flex items-center"
+      className={`btn-mono inline-flex items-center ${classname}`}
     >
       <motion.span
         className="relative flex items-center"

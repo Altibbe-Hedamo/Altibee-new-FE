@@ -1,31 +1,35 @@
 // src/components/sections/NetworkFoundation.tsx
-
-import Button from "./Button";
+import ArrowButton from "../../common/ArrowButton";
 
 const NetworkFoundation = () => (
-    <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-                <svg viewBox="0 0 410 683" className="w-full h-auto">
-                    <path fill="#FFE5E8" d="M303.282 0c-44.157 0-82.049 26.859-98.28 65.152…Z" />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <canvas className="w-4/5 h-auto bg-slate-800 rounded-lg" width={634} height={758} />
-                </div>
-            </div>
-            <div>
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">
-                    XDC <em>Network</em>
-                </h2>
-                <Button href="https://xinfin.org/" fill>
+  <section className="relative py-24 bg-white">
+    {/* top border */}
+    <span className="absolute top-0 left-[12.5%] h-px w-[75%] bg-gray-200" />
+    {/* bottom border */}
+    <span className="absolute bottom-0 left-[12.5%] h-px w-[75%] bg-gray-200" />
 
-                    Visit the XinFin Website
-                </Button>
-                <Button href="/get-in-touch" fill className="ml-4">
-                    Consult XDC Foundation
-                </Button>
-            </div>
-        </div>
-    </section>
+    <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="flex flex-col items-start space-y-6">
+        <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+          XDC <em className="not-italic">Network</em>
+        </h2>
+
+        <p className="text-lg leading-relaxed max-w-md">
+          XDC Network participants maintain top-tier relationships across
+          industries, conducting cutting-edge research and software development,
+          so the XDC Network can be first-to-market with innovative concepts and
+          unprecedented use cases.
+        </p>
+
+        <ArrowButton
+          href="/resources?target=tutorials"
+          classname="mt-4"
+        >
+          Explore XDC Ecosystem
+        </ArrowButton>
+      </div>
+    </div>
+  </section>
 );
+
 export default NetworkFoundation;

@@ -1,3 +1,4 @@
+// Navbar.tsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
@@ -5,7 +6,7 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 const navData = [
   {
     label: 'network',
-    img: '/image.png',      // ← put your preview image here
+    img: '/image.png',
     links: [
       { label: 'RWA Tokenization', href: '/rwa' },
       { label: 'Trade Finance', href: '/trade-fi' },
@@ -41,9 +42,13 @@ const navData = [
   },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  className?: string;
+}
+
+export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
   const [open, setOpen] = useState(false);
-  const [subOpen, setSubOpen] = useState(null);
+  const [subOpen, setSubOpen] = useState<string | null>(null);
 
   /* mobile-safe 100vh */
   useEffect(() => {
@@ -60,7 +65,7 @@ export default function Navbar() {
   return (
     <>
       {/* DESKTOP BAR */}
-      <nav className="bg-[#131619] text-[#9FF3FF] sticky top-0 z-40">
+      <nav className={`${className} text-[#9FF3FF] sticky top-0 z-40`}>
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
           <Link to="/" className="text-2xl font-bold">
             Altibbe
@@ -76,41 +81,38 @@ export default function Navbar() {
                 </button>
 
                 {/* Hover card */}
-             {/* Hover card */}
-<div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-96 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
-  <div className="bg-white text-[#131619] rounded-lg shadow-2xl p-5 flex gap-5">
-    {/* preview image */}
-    <img
-      src={item.img}
-      alt={item.label}
-      className="w-48 h-32 object-cover rounded"
-    />
-    {/* sub-links */}
-    <ul className="flex-1 space-y-0">
-      {item.links.map((l, idx) => (
-        <li
-          key={l.label}
-          className={`border-b border-[#131619]/20 ${
-            idx === item.links.length - 1 ? 'border-b-0' : ''
-          }`}
-        >
-          <Link
-            to={l.href}
-            className="block py-2 font-sans text-sm hover:underline"
-            onClick={() => window.scrollTo({ top: 0 })}
-          >
-            {l.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </div>
-</div>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-96 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+                  <div className="bg-white text-[#131619] rounded-lg shadow-2xl p-5 flex gap-5">
+                    <img
+                      src={item.img}
+                      alt={item.label}
+                      className="w-48 h-32 object-cover rounded"
+                    />
+                    <ul className="flex-1 space-y-0">
+                      {item.links.map((l, idx) => (
+                        <li
+                          key={l.label}
+                          className={`border-b border-[#131619]/20 ${
+                            idx === item.links.length - 1 ? 'border-b-0' : ''
+                          }`}
+                        >
+                          <Link
+                            to={l.href}
+                            className="block py-2 font-sans text-sm hover:underline"
+                            onClick={() => window.scrollTo({ top: 0 })}
+                          >
+                            {l.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
               </div>
             ))}
 
-            {/* simple links */}
-            {/* {['Home', 'About', 'Contact'].map((l) => (
+            {/* Simple nav links (if you need them) */}
+            {['Home', 'About', 'Contact'].map((l) => (
               <Link
                 key={l}
                 to={l === 'Home' ? '/' : `/${l.toLowerCase()}`}
@@ -119,7 +121,7 @@ export default function Navbar() {
               >
                 {l}
               </Link>
-            ))} */}
+            ))}
           </div>
 
           {/* Mobile hamburger */}
@@ -164,33 +166,33 @@ export default function Navbar() {
                   }`}
                 />
               </button>
-             {subOpen === item.label && (
-  <ul className="pl-4 mt-2 space-y-0 animate-slide-in">
-    {item.links.map((l, idx) => (
-      <li
-        key={l.label}
-        className={`border-b border-[#131619]/20 ${
-          idx === item.links.length - 1 ? 'border-b-0' : ''
-        }`}
-      >
-        <Link
-          to={l.href}
-          className="block py-2"
-          onClick={() => {
-            setOpen(false);
-            window.scrollTo({ top: 0 });
-          }}
-        >
-          {l.label}
-        </Link>
-      </li>
-    ))}
-  </ul>
-)}
+              {subOpen === item.label && (
+                <ul className="pl-4 mt-2 space-y-0 animate-slide-in">
+                  {item.links.map((l, idx) => (
+                    <li
+                      key={l.label}
+                      className={`border-b border-[#131619]/20 ${
+                        idx === item.links.length - 1 ? 'border-b-0' : ''
+                      }`}
+                    >
+                      <Link
+                        to={l.href}
+                        className="block py-2"
+                        onClick={() => {
+                          setOpen(false);
+                          window.scrollTo({ top: 0 });
+                        }}
+                      >
+                        {l.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
 
-          {['Home', 'About', 'Blog', 'Contact'].map((l) => (
+          {['Home', 'About', 'Contact'].map((l) => (
             <Link
               key={l}
               to={l === 'Home' ? '/' : `/${l.toLowerCase()}`}
