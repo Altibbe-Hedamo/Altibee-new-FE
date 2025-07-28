@@ -4,7 +4,7 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 
 const navData = [
   {
-    label: 'Solutions',
+    label: 'network',
     img: '/image.png',      // ← put your preview image here
     links: [
       { label: 'RWA Tokenization', href: '/rwa' },
@@ -110,7 +110,7 @@ export default function Navbar() {
             ))}
 
             {/* simple links */}
-            {['Home', 'About', 'Contact'].map((l) => (
+            {/* {['Home', 'About', 'Contact'].map((l) => (
               <Link
                 key={l}
                 to={l === 'Home' ? '/' : `/${l.toLowerCase()}`}
@@ -119,7 +119,7 @@ export default function Navbar() {
               >
                 {l}
               </Link>
-            ))}
+            ))} */}
           </div>
 
           {/* Mobile hamburger */}

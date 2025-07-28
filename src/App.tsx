@@ -16,6 +16,7 @@ import PageWipe from './components/common/PageWipe';
 import AboutPage from './pages/About';
 import HomePage from './pages/v2/HomePage';
 import NetworkPage from './pages/v2/NetworkPage';
+import BuildPage from './pages/v2/BuildPage';
 
 function App() {
   const [showWipe, setShowWipe] = useState(true);
@@ -33,7 +34,8 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<HomePage />} />
-        <Route path="/networkj" element={<NetworkPage />} />
+        <Route path="/network" element={<NetworkPage />} />
+        <Route path="/build" element={<BuildPage />} />
 
         
         <Route path="/about" element={<AboutPage />} />

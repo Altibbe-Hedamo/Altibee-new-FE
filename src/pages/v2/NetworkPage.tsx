@@ -12,7 +12,7 @@ export default function NetworkPage() {
     <>
       <NetworkHero />
       <Stats />
-      <WhyCarousel />
+      {/* <WhyCarousel /> */}
       <UnderstandingXdc />
       <CommunityBlock />
       <NetworkFoundation />
