@@ -37,7 +37,7 @@ export default function SmoothWrapper() {
           circle-reveal
         "
         style={{
-          backgroundImage: "url('https://picsum.photos/1920/1081')",
+          backgroundImage: "url('/image.png')",
           animation: 'circleGrow 1.2s cubic-bezier(.25,.8,.25,1) forwards',
         }}
       />
