@@ -1,22 +1,19 @@
-// src/components/v2/communitypage/CommunityHero.tsx
 'use client';
 import { useEffect, useRef } from 'react';
 
-export default function CommunityHero() {
+export default function SolutionsHero() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const els = [headingRef.current, taglineRef.current].filter(Boolean) as HTMLElement[];
 
-    // initial state
     els.forEach((el) => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(30px)';
       el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
     });
 
-    // reveal with stagger
     els.forEach((el, idx) =>
       setTimeout(() => {
         el.style.opacity = '1';
@@ -26,24 +23,24 @@ export default function CommunityHero() {
   }, []);
 
   return (
-    <section className="w-full min-h-[80vh] mb-2">
+    <section className="w-full min-h-[80vh] mb-4 mt-12">
       <div className="max-w-7xl mx-auto px-4 pt-10">
-        {/* LEFT-ALIGNED TEXT */}
+        {/* TOP-LEFT CORNER TEXT */}
         <div className="text-left mb-24 p-2">
           <h1
             ref={headingRef}
             className="text-5xl md:text-7xl font-bold text-gray-900"
           >
-            Join a thriving and diverse{' '}
-            <em className="not-italic text-cyan-600">Community</em>
+            Reap the rewards of{' '}
+            <em className="not-italic ">blockchain-based innovation</em>
           </h1>
           <p
             ref={taglineRef}
-            className="mt-6 max-w-3xl text-lg md:text-xl text-gray-700"
+            className="mt-6 max-w-3xl text-lg md:text-xl text-gray-700 pt-12"
           >
-            Embark on a journey with the XDC Network's enthusiastic early adopters,
-            passionate developers, and the global community, who play an everyday role
-            in the network's usage and adoption.
+            The XDC Ecosystem has developed roots across industries. As the technology
+            reaches new markets, opportunities emerge for users to interact and exchange
+            with a diverse selection of network participants.
           </p>
         </div>
 
@@ -51,7 +48,7 @@ export default function CommunityHero() {
         <div className="w-full max-h-[60vh] overflow-hidden">
           <svg viewBox="0 0 800 400" className="w-full h-full">
             <defs>
-              <clipPath id="wavyCorners" clipPathUnits="userSpaceOnUse">
+              <clipPath id="wavyCornersSolutions" clipPathUnits="userSpaceOnUse">
                 <path d="
                   M0,100 
                   C40,90 60,60 100,50 
@@ -71,7 +68,7 @@ export default function CommunityHero() {
               width="800"
               height="400"
               preserveAspectRatio="xMidYMid slice"
-              clipPath="url(#wavyCorners)"
+              clipPath="url(#wavyCornersSolutions)"
             />
           </svg>
         </div>

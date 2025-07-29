@@ -149,3 +149,23 @@ html, body {
     clip-path: circle(150% at 50% 50%);
   }
 }
+
+
+/* Puzzle clip-path ---------------------------------------------------- */
+@layer utilities {
+  .puzzle-clip {
+    clip-path: url(#puzzle-mask);
+  }
+}
+
+/* Hover reveal -------------------------------------------------------- */
+.puzzle-reveal {
+  transition: clip-path .4s ease;
+}
+.puzzle-reveal:hover {
+  clip-path: url(#puzzle-mask);
+}
+/* Tailwind-utility for clip-path */
+.transition-clip {
+  transition: clip-path 0.3s ease-in-out;
+}

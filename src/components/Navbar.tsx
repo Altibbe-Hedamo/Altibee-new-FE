@@ -1,11 +1,11 @@
-// Navbar.tsx
+// src/components/Navbar.tsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 
 const navData = [
   {
-    label: 'network',
+    label: 'Network',
     img: '/image.png',
     links: [
       { label: 'RWA Tokenization', href: '/rwa' },
@@ -43,14 +43,37 @@ const navData = [
 ];
 
 interface NavbarProps {
-  className?: string;
+  className?: string;                    // dynamic outer class for desktop bar
+  mobileClassName?: string;              // dynamic outer class for mobile drawer
 }
 
-export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
+// scroll-hide hook
+function useScrollHide(threshold = 60) {
+  const [show, setShow] = useState(true);
+  const [lastY, setLastY] = useState(0);
+
+  useEffect(() => {
+    const handle = () => {
+      const y = window.scrollY;
+      setShow(y < lastY || y <= threshold);
+      setLastY(y);
+    };
+    window.addEventListener('scroll', handle, { passive: true });
+    return () => window.removeEventListener('scroll', handle);
+  }, [lastY, threshold]);
+
+  return show;
+}
+
+export default function Navbar({
+  className = 'bg-[#131619]',
+  mobileClassName = 'bg-white',
+}: NavbarProps) {
   const [open, setOpen] = useState(false);
   const [subOpen, setSubOpen] = useState<string | null>(null);
+  const show = useScrollHide();
 
-  /* mobile-safe 100vh */
+  /* mobile safe vh */
   useEffect(() => {
     const setVh = () =>
       document.documentElement.style.setProperty(
@@ -64,14 +87,20 @@ export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
 
   return (
     <>
-      {/* DESKTOP BAR */}
-      <nav className={`${className} text-[#9FF3FF] sticky top-0 z-40`}>
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
+      {/* DESKTOP / TABLET BAR */}
+      <nav
+        className={`
+          text-[#9FF3FF] fixed top-0 left-0 right-0 z-40 h-16
+          transition-opacity duration-300
+          ${show ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+          ${className}
+        `}
+      >
+        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-full">
           <Link to="/" className="text-2xl font-bold">
             Altibbe
           </Link>
 
-          {/* Desktop mega-menu */}
           <div className="hidden md:flex items-center gap-8">
             {navData.map((item) => (
               <div key={item.label} className="relative group">
@@ -80,7 +109,6 @@ export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
                   <ChevronDown size={16} />
                 </button>
 
-                {/* Hover card */}
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-96 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
                   <div className="bg-white text-[#131619] rounded-lg shadow-2xl p-5 flex gap-5">
                     <img
@@ -98,7 +126,7 @@ export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
                         >
                           <Link
                             to={l.href}
-                            className="block py-2 font-sans text-sm hover:underline"
+                            className="block py-2 text-sm hover:underline"
                             onClick={() => window.scrollTo({ top: 0 })}
                           >
                             {l.label}
@@ -111,7 +139,6 @@ export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
               </div>
             ))}
 
-            {/* Simple nav links (if you need them) */}
             {['Home', 'About', 'Contact'].map((l) => (
               <Link
                 key={l}
@@ -124,7 +151,6 @@ export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
             ))}
           </div>
 
-          {/* Mobile hamburger */}
           <button
             className="md:hidden"
             onClick={() => setOpen((o) => !o)}
@@ -137,9 +163,11 @@ export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
 
       {/* MOBILE DRAWER */}
       <div
-        className={`fixed inset-0 z-50 bg-[#F8FBFC] text-[#131619] transform transition-transform md:hidden ${
-          open ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`
+          fixed inset-0 z-50 text-[#131619] transform transition-transform md:hidden
+          ${open ? 'translate-x-0' : '-translate-x-full'}
+          ${mobileClassName}
+        `}
         style={{ height: 'calc(var(--vh, 1vh) * 100)' }}
       >
         <div className="flex justify-between items-center p-4 border-b">
@@ -167,7 +195,7 @@ export default function Navbar({ className = 'bg-[#131619]' }: NavbarProps) {
                 />
               </button>
               {subOpen === item.label && (
-                <ul className="pl-4 mt-2 space-y-0 animate-slide-in">
+                <ul className="pl-4 mt-2 space-y-0">
                   {item.links.map((l, idx) => (
                     <li
                       key={l.label}
