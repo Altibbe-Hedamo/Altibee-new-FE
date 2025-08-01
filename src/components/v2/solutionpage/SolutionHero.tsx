@@ -29,14 +29,14 @@ export default function SolutionsHero() {
         <div className="text-left mb-24 p-2">
           <h1
             ref={headingRef}
-            className="text-5xl md:text-7xl font-bold text-gray-900"
+            className="heading-main text-5xl md:text-7xl"
           >
             Reap the rewards of{' '}
             <em className="not-italic ">blockchain-based innovation</em>
           </h1>
           <p
             ref={taglineRef}
-            className="mt-6 max-w-3xl text-lg md:text-xl text-gray-700 pt-12"
+            className="mt-6 max-w-3xl body-text text-lg md:text-xl pt-12"
           >
             The XDC Ecosystem has developed roots across industries. As the technology
             reaches new markets, opportunities emerge for users to interact and exchange

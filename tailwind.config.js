@@ -8,12 +8,21 @@ export default {
         'brand-text': '#131619',
         'brand-accent': '#FFBFAB',
         'brand-button': '#FFBFAB',
+        // PDF-inspired color palette
+        'wellness-green': '#2d5a3d',
+        'wellness-green-light': '#4a7c59',
+        'wellness-text': '#4a5568',
+        'wellness-text-light': '#718096',
+        'wellness-bg': '#f7fafc',
       },
       fontFamily: {
-        // editorial: ['Editorial New', 'serif'],
-        // sans: ['Untitled Sans', 'system-ui', 'sans-serif'],
-         serif: ['Elyanor', 'serif'],
-         sans: ['system-ui', 'sans-serif'],
+        // Primary fonts from PDF pattern
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'merriweather': ['Merriweather', 'serif'],
+        'poppins': ['Poppins', 'sans-serif'],
+        // Legacy fonts (keeping for backward compatibility)
+        serif: ['Elyanor', 'Merriweather', 'serif'],
+        sans: ['Poppins', 'Montserrat', 'system-ui', 'sans-serif'],
       },
        animation: {
         'fade-in': 'fadeIn .3s ease-out',

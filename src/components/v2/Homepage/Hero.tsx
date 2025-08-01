@@ -23,21 +23,21 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10 opacity-5 bg-[url('/image.png')]" />
 
       <div className="max-w-5xl mx-auto text-center">
-        {/* Editorial headline */}
-        <h1 className="font-editorial text-[clamp(6.2rem,7.3vw,16.6rem)] leading-none tracking-tight">
+        {/* Main heading with PDF font pattern */}
+        <h1 className="heading-main text-[clamp(6.2rem,7.3vw,16.6rem)] leading-none tracking-tight text-[#9FF3FF]">
           <em className="not-italic">
             Enterprise-grade <br /> blockchain
           </em>
         </h1>
 
-        <p className="mt-6 font-sans text-[clamp(1.8rem,2vw,2.2rem)] text-[#9FF3FF]/90">
+        <p className="mt-6 body-text text-[clamp(1.8rem,2vw,2.2rem)] text-[#9FF3FF]/90">
           EVM-compatible, open-source, ready for trade finance.
         </p>
 
         {/* Animated button */}
         <a
           href="#next"
-          className="group relative inline-flex items-center justify-center max-w-[42.5rem] mt-12 px-8 py-5 font-sans text-[clamp(1.8rem,2vw,2.2rem)] tracking-tight"
+          className="group relative inline-flex items-center justify-center max-w-[42.5rem] mt-12 px-8 py-5 button-text text-[clamp(1.8rem,2vw,2.2rem)] text-[#9FF3FF]"
         >
           <span className="relative overflow-hidden">
             <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">

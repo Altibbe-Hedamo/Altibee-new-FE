@@ -5,44 +5,53 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 const navData = [
   {
     label: 'Network',
+    href: '/network',
     img: '/image.png',
     links: [
-      { label: 'community', href: '/community' },
-      { label: 'Build', href: '/build' },
-      { label: 'Resources', href: '/resources' },
+      { label: 'Network Overview', href: '/network' },
+      { label: 'Community', href: '/community' },
+      { label: 'Solutions', href: '/solution' },
     ],
   },
   {
-    label: 'Build on XDC',
+    label: 'Build',
+    href: '/build',
     img: '/image.png',
     links: [
-      { label: 'resources', href: '/resources' },
-      { label: 'GitHub', href: 'https://github.com' },
+      { label: 'Developer Hub', href: '/build' },
+      { label: 'Resources', href: '/resources' },
+      { label: 'GitHub', href: 'https://github.com/XinFinOrg' },
     ],
   },
   {
     label: 'Resources',
-    img: '/images/resources.jpg',
+    href: '/resources',
+    img: '/image.png',
     links: [
-      { label: 'Community', href: '/community' },
+      { label: 'Documentation', href: '/resources' },
+      { label: 'Whitepaper', href: 'https://xdc.org/whitepaper' },
+      { label: 'Brand Assets', href: '/resources#brand-assets' },
     ],
   },
   {
     label: 'Community',
-    img: '/images/community.jpg',
+    href: '/community',
+    img: '/image.png',
     links: [
-      { label: 'Discord', href: 'https://discord.com' },
-      { label: 'Twitter', href: 'https://twitter.com' },
-      { label: 'Forum', href: '/forum' },
+      { label: 'Community Hub', href: '/community' },
+      { label: 'Discord', href: 'https://discord.gg/xdc' },
+      { label: 'Twitter', href: 'https://twitter.com/XinFinOrg' },
+      { label: 'Telegram', href: 'https://t.me/XinFinTech' },
     ],
   },
   {
-    label: 'Contact',
-    img: '/images/contact.jpg',
+    label: 'Solutions',
+    href: '/solution',
+    img: '/image.png',
     links: [
-      { label: 'GitHub', href: 'https://github.com' },
-      { label: 'LinkedIn', href: 'https://linkedin.com' },
-      { label: 'Email', href: 'mailto:contact@example.com' },
+      { label: 'Enterprise Solutions', href: '/solution' },
+      { label: 'Trade Finance', href: '/solution#trade-finance' },
+      { label: 'Supply Chain', href: '/solution#supply-chain' },
     ],
   },
 ];
@@ -88,7 +97,7 @@ export default function Navbar({
       {/* DESKTOP NAVBAR */}
       <nav
         className={`
-          text-[#9FF3FF] fixed top-0 left-0 right-0 z-40 h-16
+          text-[#9FF3FF] fixed top-0 left-0 right-0 z-40 h-20
           transition-opacity duration-300
           ${show ? 'opacity-100' : 'opacity-0 pointer-events-none'}
           ${className}
@@ -105,14 +114,22 @@ export default function Navbar({
                 onMouseEnter={() => setSubOpen(item.label)}
                 onMouseLeave={() => setSubOpen(null)}
               >
-                <button className="flex items-center gap-1 font-medium">
+                <Link 
+                  to={item.href} 
+                  className="flex items-center gap-1 font-medium py-2 hover:text-white transition-colors"
+                  onClick={() => window.scrollTo({ top: 0 })}
+                >
                   {item.label}
                   <ChevronDown size={16} />
-                </button>
+                </Link>
 
                 {subOpen === item.label && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-96 z-50">
-                    <div className="bg-white text-[#131619] rounded-lg shadow-2xl p-5 flex gap-5">
+                  <div 
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-0 w-96 z-50"
+                    onMouseEnter={() => setSubOpen(item.label)}
+                    onMouseLeave={() => setSubOpen(null)}
+                  >
+                    <div className="bg-white text-[#131619] rounded-lg shadow-2xl p-5 flex gap-5 mt-2">
                       <img
                         src={item.img}
                         alt={item.label}
@@ -180,18 +197,29 @@ export default function Navbar({
         <div className="p-4 space-y-4 overflow-y-auto">
           {navData.map((item) => (
             <div key={item.label}>
-              <button
-                className="w-full flex justify-between items-center font-semibold"
-                onClick={() =>
-                  setSubOpen(subOpen === item.label ? null : item.label)
-                }
-              >
-                {item.label}
-                <ChevronDown
-                  size={18}
-                  className={`transition-transform ${subOpen === item.label ? 'rotate-180' : ''}`}
-                />
-              </button>
+              <div className="flex">
+                <Link
+                  to={item.href}
+                  className="flex-1 font-semibold py-2"
+                  onClick={() => {
+                    setOpen(false);
+                    window.scrollTo({ top: 0 });
+                  }}
+                >
+                  {item.label}
+                </Link>
+                <button
+                  className="px-2"
+                  onClick={() =>
+                    setSubOpen(subOpen === item.label ? null : item.label)
+                  }
+                >
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform ${subOpen === item.label ? 'rotate-180' : ''}`}
+                  />
+                </button>
+              </div>
               {subOpen === item.label && (
                 <ul className="pl-4 mt-2 space-y-0">
                   {item.links.map((l, idx) => {

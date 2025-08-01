@@ -43,6 +43,42 @@
 
 
 @layer components {
+  /* PDF Font Pattern Typography */
+  .heading-main {
+    @apply font-merriweather text-4xl md:text-5xl lg:text-6xl font-normal leading-tight;
+    color: #2d5a3d; /* Deep green from PDF */
+  }
+  
+  .heading-section {
+    @apply font-merriweather text-2xl md:text-3xl lg:text-4xl font-normal leading-snug;
+    color: #2d5a3d;
+  }
+  
+  .heading-sub {
+    @apply font-montserrat text-lg md:text-xl lg:text-2xl font-medium leading-relaxed;
+    color: #2d5a3d;
+  }
+  
+  .body-text {
+    @apply font-poppins text-base md:text-lg leading-relaxed font-normal;
+    color: #4a5568; /* Neutral gray for body text */
+  }
+  
+  .button-text {
+    @apply font-montserrat text-sm md:text-base font-medium tracking-wide;
+    color: #2d5a3d;
+  }
+  
+  .tagline-text {
+    @apply font-merriweather text-lg md:text-xl italic leading-relaxed;
+    color: #2d5a3d;
+  }
+  
+  .footer-text {
+    @apply font-poppins text-sm leading-normal;
+    color: #718096; /* Lighter gray for footer */
+  }
+
   .btn-mono {
     @apply font-mono uppercase tracking-wider text-sm px-6 py-3
            border border-current
@@ -62,7 +98,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Updated to match PDF pattern */
   background-color: #fff;
   scroll-snap-type: y mandatory;
 }
