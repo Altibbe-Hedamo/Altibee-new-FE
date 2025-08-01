@@ -17,27 +17,34 @@ export default function Hero() {
   return (
     <section
       style={{ height: 'calc(var(--vh, 1vh) * 84)' }}
-      className="relative w-full flex items-center justify-center bg-[#131619] text-[#9FF3FF] px-6  sticky top-0 0"
+      className="relative w-full flex items-center justify-center bg-primary-900 text-accent-mint px-6 sticky top-0"
     >
-      {/* Optional subtle noise overlay */}
-      <div className="absolute inset-0 -z-10 opacity-5 bg-[url('/image.png')]" />
+      {/* Optional subtle noise overlay with organic texture */}
+      <div 
+        className="absolute inset-0 -z-10 opacity-10"
+        style={{ 
+          backgroundImage: "url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1920&h=1080&q=80')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      />
 
       <div className="max-w-5xl mx-auto text-center">
         {/* Main heading with PDF font pattern */}
-        <h1 className="heading-main text-[clamp(6.2rem,7.3vw,16.6rem)] leading-none tracking-tight text-[#9FF3FF]">
+        <h1 className="heading-main text-[clamp(6.2rem,7.3vw,16.6rem)] leading-none tracking-tight text-accent-mint">
           <em className="not-italic">
-            Enterprise-grade <br /> blockchain
+            Organic-grade <br /> blockchain
           </em>
         </h1>
 
-        <p className="mt-6 body-text text-[clamp(1.8rem,2vw,2.2rem)] text-[#9FF3FF]/90">
-          EVM-compatible, open-source, ready for trade finance.
+        <p className="mt-6 body-text text-[clamp(1.8rem,2vw,2.2rem)] text-accent-mint/90">
+          EVM-compatible, sustainable, ready for organic trade finance.
         </p>
 
         {/* Animated button */}
         <a
           href="#next"
-          className="group relative inline-flex items-center justify-center max-w-[42.5rem] mt-12 px-8 py-5 button-text text-[clamp(1.8rem,2vw,2.2rem)] text-[#9FF3FF]"
+          className="group relative inline-flex items-center justify-center max-w-[42.5rem] mt-12 px-8 py-5 button-text text-[clamp(1.8rem,2vw,2.2rem)] text-accent-mint bg-primary-600 hover:bg-primary-500 rounded-lg transition-colors"
         >
           <span className="relative overflow-hidden">
             <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">

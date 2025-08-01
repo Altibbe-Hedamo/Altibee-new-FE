@@ -29,54 +29,53 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  @apply bg-neutral-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #14b8a6;
-  border-radius: 4px;
+  @apply bg-primary-500 rounded;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0d9488;
+  @apply bg-primary-600;
 }
 
 
 @layer components {
-  /* PDF Font Pattern Typography */
+  /* Organic Font Pattern Typography */
   .heading-main {
     @apply font-merriweather text-4xl md:text-5xl lg:text-6xl font-normal leading-tight;
-    color: #2d5a3d; /* Deep green from PDF */
+    @apply text-primary-800; /* Consistent organic green */
   }
   
   .heading-section {
     @apply font-merriweather text-2xl md:text-3xl lg:text-4xl font-normal leading-snug;
-    color: #2d5a3d;
+    @apply text-primary-700;
   }
   
   .heading-sub {
     @apply font-montserrat text-lg md:text-xl lg:text-2xl font-medium leading-relaxed;
-    color: #2d5a3d;
+    @apply text-primary-600;
   }
   
   .body-text {
     @apply font-poppins text-base md:text-lg leading-relaxed font-normal;
-    color: #4a5568; /* Neutral gray for body text */
+    @apply text-organic-text; /* Consistent body text */
   }
   
   .button-text {
     @apply font-montserrat text-sm md:text-base font-medium tracking-wide;
-    color: #2d5a3d;
+    @apply text-primary-700;
   }
   
   .tagline-text {
     @apply font-merriweather text-lg md:text-xl italic leading-relaxed;
-    color: #2d5a3d;
+    @apply text-primary-600;
   }
   
   .footer-text {
     @apply font-poppins text-sm leading-normal;
-    color: #718096; /* Lighter gray for footer */
+    @apply text-organic-text-light; /* Consistent footer text */
   }
 
   .btn-mono {
@@ -99,7 +98,7 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif; /* Updated to match PDF pattern */
-  background-color: #fff;
+  @apply bg-organic-bg text-organic-text;
   scroll-snap-type: y mandatory;
 }
 

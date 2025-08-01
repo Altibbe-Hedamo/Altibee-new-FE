@@ -25,7 +25,7 @@ const features = [
 
 export default function FeatureTriple() {
   return (
-    <section className="bg-[#131619] text-[#9FF3FF]">
+    <section className="bg-primary-900 text-accent-mint">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           {features.map((f) => (
@@ -37,7 +37,7 @@ export default function FeatureTriple() {
                 <h2 className="font-serif text-3xl md:text-4xl tracking-tight">
                   {f.title}
                 </h2>
-                <p className="mt-4 font-sans text-base leading-relaxed text-[#9FF3FF]/90">
+                <p className="mt-4 body-text text-base leading-relaxed text-accent-mint/90">
                   {f.body}
                 </p>
               </div>

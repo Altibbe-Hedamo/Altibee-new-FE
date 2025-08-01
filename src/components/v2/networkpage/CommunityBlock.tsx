@@ -3,7 +3,7 @@
 import Button from "./Button";
 
 const CommunityBlock = () => (
-  <section className="bg-[#FFE5E8] py-24">
+      <section className="bg-accent-sage py-24">
     <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
       <div className="bg-slate-300 aspect-square rounded-xl" />
       <div>

@@ -19,9 +19,9 @@ const Stats = () => (
         {stats.map((s, i) => (
           <div
             key={i}
-            className="bg-[#FFE5E8] h-48 w-full flex flex-col items-center justify-center"
+                          className="bg-accent-sage h-48 w-full flex flex-col items-center justify-center"
           >
-            <p className="text-4xl md:text-5xl font-bold text-[#131619]">
+            <p className="text-4xl md:text-5xl font-bold text-primary-800">
               <CountUp
                 start={0}
                 end={s.num}
@@ -31,7 +31,7 @@ const Stats = () => (
               />
               {s.suffix}
             </p>
-            <p className="mt-2 text-lg text-[#5D6D74]">{s.label}</p>
+                          <p className="mt-2 text-lg text-organic-text-light">{s.label}</p>
           </div>
         ))}
       </div>

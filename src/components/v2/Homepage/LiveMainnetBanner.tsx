@@ -14,7 +14,7 @@ export default function LiveMainnetBanner() {
 
       {/* text block – top-left */}
       <div className="absolute top-0 left-0 z-10 flex flex-col items-start p-[clamp(1rem,5vw,3rem)]">
-        <div className="flex flex-col items-start gap-2 md:gap-3 font-serif text-[#9FF3FF]">
+        <div className="flex flex-col items-start gap-2 md:gap-3 font-serif text-accent-mint">
           {/* stacked headlines */}
           <h2 className="text-[clamp(2.25rem,5vw,4rem)] leading-none tracking-tighter">
             The RWA and
@@ -41,7 +41,7 @@ export default function LiveMainnetBanner() {
         {/* button – bottom-left */}
         <a
           href="/read-now"
-          className="absolute bottom-0 left-0 mb-4 ml-[clamp(1rem,5vw,3rem)] inline-flex items-center font-sans text-[#9FF3FF] text-lg border-b border-[#9FF3FF] pb-1 hover:border-b-2 hover:pb-[2px] transition-all"
+          className="absolute bottom-0 left-0 mb-4 ml-[clamp(1rem,5vw,3rem)] inline-flex items-center button-text text-accent-mint text-lg border-b border-accent-mint pb-1 hover:border-b-2 hover:pb-[2px] transition-all"
         >
           READ NOW
           <ArrowRightIcon className="ml-2 h-5 w-5" />

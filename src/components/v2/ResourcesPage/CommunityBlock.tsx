@@ -1,7 +1,10 @@
 // src/components/build/CommunityBlock.jsx
 import ArrowButton from "../../common/ArrowButton";
+import { useScrollAnimation, useScrollAnimationRight } from "../../../hooks/useScrollAnimation";
 
 export default function CommunityBlock() {
+  const headingRef = useScrollAnimation({ delay: 0 });
+  const textRef = useScrollAnimationRight({ delay: 0.2 });
   return (
     <section className="bg-white">
       {/* full-width flex container (no inner padding) */}
@@ -9,7 +12,7 @@ export default function CommunityBlock() {
         {/* 1) LEFT : image always 50 %, no gaps */}
         <div className="w-full md:w-1/2">
           <img
-            src="https://images.prismic.io/xdcf/d024779d-daec-4c62-bb65-76f67868cdfd_chess.jpeg?auto=compress,format"
+            src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80"
             alt="Community"
             className="w-full h-full object-cover min-h-[50vh] md:min-h-0"
           />

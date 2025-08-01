@@ -33,8 +33,8 @@ export default function ResourcesHero() {
           }}
         >
           <img
-            src="/image.png"
-            alt="XDC resources"
+            src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1200&h=800&q=80"
+            alt="Organic resources and herbs"
             className="w-full h-full object-cover"
           />
         </div>

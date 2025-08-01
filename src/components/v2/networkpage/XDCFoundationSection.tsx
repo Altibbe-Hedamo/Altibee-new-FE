@@ -58,7 +58,7 @@ const XDCFoundationSection = () => {
           <div className="flex flex-col items-start space-y-6">
             <div className="w-full max-w-sm h-[500px]">
               <img
-                src="/image.png" // swap for real asset
+                src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&h=600&q=80" // Organic innovation image
                 alt="XDC illustration"
                 className="w-full h-full object-cover"
                 style={{ clipPath: 'url(#frame-a)', WebkitClipPath: 'url(#frame-a)' }}

@@ -1,26 +1,9 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useScrollAnimation, useScrollAnimationRight } from '../../../hooks/useScrollAnimation';
 
 export default function SolutionsHero() {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const taglineRef = useRef<HTMLParagraphElement>(null);
-
-  useEffect(() => {
-    const els = [headingRef.current, taglineRef.current].filter(Boolean) as HTMLElement[];
-
-    els.forEach((el) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-    });
-
-    els.forEach((el, idx) =>
-      setTimeout(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }, 100 + idx * 150)
-    );
-  }, []);
+  const headingRef = useScrollAnimation({ delay: 0 });
+  const taglineRef = useScrollAnimationRight({ delay: 0.2 });
 
   return (
     <section className="w-full min-h-[80vh] mb-4 mt-12">

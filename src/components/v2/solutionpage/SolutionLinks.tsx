@@ -50,7 +50,7 @@ export default function SolutionLinks() {
         {/* left half: image */}
         <div className="flex justify-center">
           <img
-            src="/image.png"
+            src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=600&h=400&q=80"
             alt="XDC Solutions"
             className="object-contain w-full h-auto max-w-lg"
           />

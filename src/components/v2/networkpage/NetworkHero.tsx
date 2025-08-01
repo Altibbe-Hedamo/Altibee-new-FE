@@ -28,7 +28,7 @@ const NetworkHero = () => (
       {/* Right side – image fills full height */}
       <div className="flex items-stretch">
         <img
-          src="/image.png"
+          src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&h=800&q=80"
           alt="XDC illustration"
           className="w-full h-full object-cover"
           style={{ clipPath: 'url(#frame-a)' }}

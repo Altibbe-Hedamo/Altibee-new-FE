@@ -5,7 +5,7 @@ import ArrowButton from '../../common/ArrowButton';
 export default function SplitScreenIntro() {
   return (
     // <section className="bg-[#131619] text-[#9FF3FF]">
-    <section className="bg-[#131619] text-[#9FF3FF] z-10">
+    <section className="bg-primary-900 text-accent-mint z-10">
       <div className="flex flex-col lg:flex-row">
         {/* 1️⃣  LEFT : Image half */}
         <div
@@ -22,7 +22,7 @@ export default function SplitScreenIntro() {
             <h2 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] leading-tight">
               Enterprise
             </h2>
-            <p className="font-sans text-[1rem] leading-[1.6] mt-3 text-[#9FF3FF]/90">
+            <p className="body-text text-[1rem] leading-[1.6] mt-3 text-accent-mint/90">
               The XDC Network is a groundbreaking blockchain with impressive
               speed, scalability, low fees, and military-grade security. Using
               XDC Network, businesses can improve their record keeping, exchange
@@ -38,7 +38,7 @@ export default function SplitScreenIntro() {
             <h2 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] leading-tight">
               Trade Finance
             </h2>
-            <p className="font-sans text-[1rem] leading-[1.6] mt-3 text-[#9FF3FF]/90">
+            <p className="body-text text-[1rem] leading-[1.6] mt-3 text-accent-mint/90">
               The XDC Network sets a benchmark for digitizing trade finance by
               enabling the tokenization of diverse trade finance instruments and
               assets.
@@ -53,7 +53,7 @@ export default function SplitScreenIntro() {
             <h2 className="font-serif text-[clamp(1.75rem,3vw,2.5rem)] leading-tight">
               Developers & Creators
             </h2>
-            <p className="font-sans text-[1rem] leading-[1.6] mt-3 text-[#9FF3FF]/90">
+            <p className="body-text text-[1rem] leading-[1.6] mt-3 text-accent-mint/90">
               The XDC Network is an enterprise-grade, open-source and
               EVM-compatible Layer 1 blockchain. Geared to accommodate any EVM
               tool set, developers can carry their skills from other chains onto

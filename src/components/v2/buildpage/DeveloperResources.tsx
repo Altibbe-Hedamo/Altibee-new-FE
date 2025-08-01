@@ -28,7 +28,7 @@ export default function DeveloperResources() {
         {/* ---- Left: Hero Image ---- */}
         <div className="relative">
           <img
-            src="/image.png"
+            src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&h=600&q=80"
             alt="Developer Resources"
             className="w-full h-auto rounded-3xl object-cover"
           />

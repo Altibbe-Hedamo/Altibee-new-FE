@@ -6,7 +6,7 @@ const navData = [
   {
     label: 'Network',
     href: '/network',
-    img: '/image.png',
+    img: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&h=300&q=80', // Organic network/connection
     links: [
       { label: 'Network Overview', href: '/network' },
       { label: 'Community', href: '/community' },
@@ -16,7 +16,7 @@ const navData = [
   {
     label: 'Build',
     href: '/build',
-    img: '/image.png',
+    img: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=400&h=300&q=80', // Organic building/growth
     links: [
       { label: 'Developer Hub', href: '/build' },
       { label: 'Resources', href: '/resources' },
@@ -26,7 +26,7 @@ const navData = [
   {
     label: 'Resources',
     href: '/resources',
-    img: '/image.png',
+    img: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=400&h=300&q=80', // Organic resources/herbs
     links: [
       { label: 'Documentation', href: '/resources' },
       { label: 'Whitepaper', href: 'https://xdc.org/whitepaper' },
@@ -36,7 +36,7 @@ const navData = [
   {
     label: 'Community',
     href: '/community',
-    img: '/image.png',
+    img: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=400&h=300&q=80', // Organic community/market
     links: [
       { label: 'Community Hub', href: '/community' },
       { label: 'Discord', href: 'https://discord.gg/xdc' },
@@ -47,7 +47,7 @@ const navData = [
   {
     label: 'Solutions',
     href: '/solution',
-    img: '/image.png',
+    img: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=400&h=300&q=80', // Organic solutions/innovation
     links: [
       { label: 'Enterprise Solutions', href: '/solution' },
       { label: 'Trade Finance', href: '/solution#trade-finance' },
@@ -97,7 +97,7 @@ export default function Navbar({
       {/* DESKTOP NAVBAR */}
       <nav
         className={`
-          text-[#9FF3FF] fixed top-0 left-0 right-0 z-40 h-20
+          text-accent-mint fixed top-0 left-0 right-0 z-40 h-20 mb-8
           transition-opacity duration-300
           ${show ? 'opacity-100' : 'opacity-0 pointer-events-none'}
           ${className}
